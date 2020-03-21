@@ -25,7 +25,7 @@ PowerManagement.prototype.acquire = function(successCallback,failureCallback, ru
     if( typeof runLockScreen === "undefined" ) runLockScreen = false;
 
     cordova.exec(successCallback, failureCallback, 'PowerManagement', 'acquire', [runLockScreen]);
-}
+};
 
 /**
  * Release the wake-lock
@@ -35,7 +35,7 @@ PowerManagement.prototype.acquire = function(successCallback,failureCallback, ru
  */
 PowerManagement.prototype.release = function(successCallback,failureCallback) {
     cordova.exec(successCallback, failureCallback, 'PowerManagement', 'release', []);
-}
+};
 
 /**
  * Enable or disable releasing of the wakelock on pause
@@ -46,7 +46,7 @@ PowerManagement.prototype.release = function(successCallback,failureCallback) {
  */
 PowerManagement.prototype.setReleaseOnPause = function(enabled, successCallback, failureCallback) {
     cordova.exec(successCallback, failureCallback, 'PowerManagement', 'setReleaseOnPause', [enabled]);
-}
+};
 
 /**
  * Acquire a partial wake-lock, allowing the device to dim the screen
@@ -56,6 +56,6 @@ PowerManagement.prototype.setReleaseOnPause = function(enabled, successCallback,
  */
 PowerManagement.prototype.dim = function(successCallback,failureCallback) {
     cordova.exec(successCallback, failureCallback, 'PowerManagement', 'acquire', [true]);
-}
+};
 
 module.exports = new PowerManagement();

@@ -1,6 +1,4 @@
-PowerManagement
-===============
-Plugin for Cordova (3.0+)
+# PowerManagement
 
 The PowerManagement plugin offers access to the devices power-management functionality.
 It should be used for applications which keep running for a long time without any user interaction.
@@ -8,75 +6,74 @@ It should be used for applications which keep running for a long time without an
 For details on power functionality see:
 
 * Android: [PowerManager](http://developer.android.com/reference/android/os/PowerManager.html)
-* iOS: [idleTimerDisabled](http://developer.apple.com/library/ios/documentation/UIKit/Reference/UIApplication_Class/Reference/Reference.html#//apple_ref/occ/instp/UIApplication/idleTimerDisabled)
-* WindowsPhone: [UserIdleDetectionMode](http://msdn.microsoft.com/en-US/library/windowsphone/develop/microsoft.phone.shell.phoneapplicationservice.useridledetectionmode%28v=vs.105%29.aspx)
-* Windows: [Windows.System.Display.DisplayRequest](https://msdn.microsoft.com/en-us/library/windows/apps/windows.system.display.displayrequest#methods)
 
-Installation
----------
-Install using npm:
+## Supported Platforms
 
-`$ npm i cordova-plugin-powermanagement-orig`
+* Android
 
-Install the plugin using the cordova command line utility:
+## Installation
 
-`$ cordova plugin add https://github.com/Viras-/cordova-plugin-powermanagement.git`
+```sh
+cordova plugin add @red-mobile/cordova-plugin-powermanagement
+```
 
-Usage
------
+### uninstall
+
+```sh
+cordova plugin remove cordova-plugin-powermanagement
+npm uninstall @red-mobile/cordova-plugin-powermanagement
+```
+
+## Usage
 
 ### window.powerManagement.acquire(successCallback, failureCallback)
+
 Acquire a wakelock by calling this.
 
+```js
 	window.powerManagement.acquire(function() {
 		console.log('Wakelock acquired');
 	}, function() {
 		console.log('Failed to acquire wakelock');
 	});
+```
 
 ### window.powerManagement.dim(successCallback, failureCallback)
+
 This acquires a partial wakelock, allowing the screen to be dimmed.
 
+```js
 	window.powerManagement.dim(function() {
 		console.log('Wakelock acquired');
 	}, function() {
 		console.log('Failed to acquire wakelock');
 	});
+```
 
 This function is nort supported on windows platform and will invoke the successCallback.
 
 ### window.powerManagement.release(successCallback, failureCallback)
+
 Release the wakelock. It's important to do this when you're finished with the wakelock, to avoid unnecessary battery drain.
 
+```js
 	window.powerManagement.release(function() {
 		console.log('Wakelock released');
 	}, function() {
 		console.log('Failed to release wakelock');
 	});
+```
 
-### [Android Only] window.powerManagement.setReleaseOnPause(enabled, successCallback, failureCallback)
+### window.powerManagement.setReleaseOnPause(enabled, successCallback, failureCallback)
+
 By default, the plugin will automatically release a wakelock when your app is paused (e.g. when the screen is turned off, or the user switches to another app). It will reacquire the wakelock upon app resume. If you would prefer to disable this behaviour, you can use this function.
 
+```js
 	window.powerManagement.setReleaseOnPause(false, function() {
 		console.log('Set successfully');
 	}, function() {
 		console.log('Failed to set');
 	});
+```
 
 Note that in all the above examples, all callbacks are optional.
-
-License
-=======
-Copyright 2013 Wolfgang Koller
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
