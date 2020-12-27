@@ -20,8 +20,7 @@ cordova plugin add @red-mobile/cordova-plugin-powermanagement
 ### uninstall
 
 ```sh
-cordova plugin remove cordova-plugin-powermanagement
-npm uninstall @red-mobile/cordova-plugin-powermanagement
+cordova plugin remove @red-mobile/cordova-plugin-powermanagement
 ```
 
 ## Usage
